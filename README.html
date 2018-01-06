@@ -1,0 +1,124 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+	        body {
+	        	padding: 2em;
+				background: #3f729b;
+				color: #fff;
+			}
+			a,a:active,a:visited {
+				color:#eee;
+				text-decoration: underline;
+			}
+			a:hover,a:focus{
+				color: #fff;
+			}
+			code {
+				background:#eee;
+				color:#000;
+				padding:2px 4px;
+				border-radius:2px;
+			}
+	    </style>
+    </head>
+    <body>
+	    <h1 id="gridsterforinstagram"><a href="http://gumroad.com/l/gridster">Gridster for instagram v1.1</a></h1>
+
+<p>Gridster for instagram is the easiest way to get a customized, full-screen, display of any instagram feed.  As its name implies, Gridster loads the images you want into a photo wall and animates through them.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Navigate to the <code>assets/js</code> folder open the <code>Gridster.js</code> file and enter your <a href="https://instagram.com/developer/clients/manage/">clientID</a> on line 1.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Simply open index.html in your browser and Gridster will display the most popular images on instagram.  Click on the hashtag to enter full-screen mode.</p>
+
+<h2 id="customization">Customization</h2>
+
+<p>There are two ways to customize the output of Gridster, the first is with the URL query string and the second is by editing Gridster.js</p>
+
+<h3 id="querystring">Query String</h3>
+
+<p>There are a number of options that you can use to customize the display of Gridster using the query string.</p>
+
+<ul>
+<li>tag: You can use <code>tag=tagname</code> to show a specific tag from instagram.  If no tag is provided, images from the "popular page" are displayed. You don't need to add "#" at the beginning, just the name of the tag. [default: null]</li>
+<li>images: You can use <code>images=##</code> to set how many images to fetch (maximum 60). [default: 60]</li>
+<li>speed: You can use <code>speed=##</code> to control the speed in seconds of the animation transitions between images. [default: 1]</li>
+<li>pause: You can use <code>pause=##</code> to control the time in seconds the scroll pauses between animations.  [default: 10]</li>
+<li>reload: You can use <code>reload=##</code> to control the time in minutes Gridster waits to get new images from instagram. [default: 60]</li>
+<li>sort: You can use <code>sort=none</code> to control the order in which the images are sorted on the page.  Available sort options are: none, most-recent, least-recent, most-liked, least-liked, most-commented, least-commented, and random. [default: none]</li>
+<li>animation: You can use <code>animation=scale</code> to control the animation type used to transition between images.  Available animation options are: showhide, fadeinout, slideleft, slideright, slidetop, slidebottom, rotateleft, rotateright, rotatetop, rotatebottom, scale, rotate3d, rotateleftscale, rotaterightscale, rotatetopscale, rotatebottomscale, and random. [default: random]</li>
+<li>rows: You can use <code>rows=##</code> to specify the number of rows in the grid. [default: 3]</li>
+<li>columns: You can use <code>columns=##</code> to specify the number of columns in the grid.  If the total images in rows multiplied by columns is more than specified in "images" then Gridster will subtract columns until the grid is full.  [default: 4]</li>
+<li>step: You can use <code>step=##</code> or <code>step=random</code> to control the number of animations that occur simultaneously. [default: random]</li>
+<li>maxstep: If step is set to "random" you can set <code>maxstep=##</code> to control the maximum amount of animations that occur at once. [default: 2]</li>
+<li>author: You can use <code>author</code> to display the username of the person who posted the picture. [default: null]</li>
+<li>caption: You can use <code>caption</code> to display the caption that was originally posted with the image (including hashtags) [default: null]</li>
+<li>comments: You can use <code>comments</code> to display the comment count on the image. [default: null]</li>
+<li>likes: You can use <code>likes</code> to display the number of likes on an image. [default: null]</li>
+<li>link: You can use <code>link</code> so that clicking the image will take the user to the image post on instagram. [default: null]</li>
+<li>background: You can use <code>background=red</code> to change the default background color.  If you use hex or rgb be sure to encode the URL. [default: null]</li>
+<li>color: You can use <code>color=purple</code> to change the default font color.  If you use hex or rgb be sure to encode the URL (# is %23). [default: null]</li>
+<li>clientid: You can use <code>clientid=##</code> to provide or override a clientID inserted in Gridster.js. [default: null]</li>
+</ul>
+
+<h3 id="gridsterjs">Gridster.js</h3>
+
+<p>Most of the variables that control the output of Gridster are in the <code>urlParams{}</code> object.  Simply change the default values that you want.  If you don't want users to be able to modify the output with the query string then at the top of Gridster.js set <code>enableQuery = false;</code> and only the settings from the js file will be used. </p>
+
+<h2 id="examples">Examples</h2>
+
+<p><code>?tag=spring&amp;author&amp;sort=random</code>: Display 60 large images all tagged "spring" with the username displayed, randomly displaying them in the grid.</p>
+
+<p><code>?sort=most-liked&amp;speed=0&amp;refresh=5&amp;likes&amp;link</code>: Display a small grid that doesn't animate of the most popular images on instagram that refreshes every 5 minutes, sorted by likes and you can click to see the original on instagram.</p>
+
+<p><code>?tag=tbt&amp;author&amp;likes&amp;comments&amp;caption</code>: See who's throwing back and what they have to say about it.</p>
+
+<h2 id="license">License</h2>
+
+<p>Gridster is built using a combination of open source and proprietary code.  The individual licenses for each open source component can be found in the LICENSE folder.</p>
+
+<h3 id="main">Main</h3>
+
+<p>Gridster for instagram is copyright <a href="https://iyware.com">Danny Wahl</a>, all rights reserved except where specified in the LICENSE file.</p>
+
+<h3 id="thirdparty">Third Party</h3>
+<p>The following open source libraries are used to build Gridster for instagram:</p>
+<ul>
+<li><a href="http://tympanus.net/codrops/2012/08/02/animated-responsive-image-grid/">Animated Responsive Image Grid</a> | © Tympanus | Tympanus License</li>
+<li><a href="https://html5boilerplate.com/">HTML 5 Boilerplate</a> | © HTML 5 Boilerplate | MIT License</li>
+<li><a href="http://instafeedjs.com/">Instafeed.js</a> | © Steven Schobert | MIT License</li>
+<li><a href="https://jquery.org/">jQuery</a> | © jQuery Foundation and other contributors | MIT License</li>
+<li><a href="http://modernizr.com/">Modernizr</a> | © Faruk Ateş | MIT License</li>
+<li><a href="http://necolas.github.io/normalize.css/">Normalize.css</a> | © Nicolas Gallagher and Jonathan Neal | MIT License</li>
+<li><a href="http://sindresorhus.com/screenfull.js/">Screenfull.js</a> | © Sindre Sorhus | MIT License</li>
+</ul>
+
+<h2 id="changelog">Changelog</h2>
+
+<ul>
+	<li>1.1
+		<ul>
+			<li>Content reload doesn't exit fullscreen anymore</li>
+			<li>readme now written in html</li>
+		</ul>
+	</li>
+	<li>1.0
+		<ul>
+			<li>Initial release</li>
+		</ul>
+	</li>
+</ul>
+    </body>
+</html>
